@@ -14,9 +14,9 @@
         android:layout_height="@dimen/posts_avatar_size"
         android:layout_marginBottom="@dimen/common_spacing"
         android:contentDescription="@string/description_post_author_avatar"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/barrier"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@sample/posts.json/data/authorAvatar" />
 
     <TextView
@@ -27,10 +27,10 @@
         android:layout_marginEnd="@dimen/common_spacing"
         android:ellipsize="end"
         android:singleLine="true"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/published"
         app:layout_constraintEnd_toStartOf="@id/menu"
         app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
         tools:text="@sample/posts.json/data/author" />
 
@@ -41,10 +41,10 @@
         android:layout_marginStart="@dimen/common_spacing"
         android:layout_marginEnd="@dimen/common_spacing"
         android:layout_marginBottom="@dimen/common_spacing"
-        app:layout_constraintTop_toBottomOf="@id/author"
         app:layout_constraintBottom_toBottomOf="@id/barrier"
         app:layout_constraintEnd_toStartOf="@id/menu"
         app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintTop_toBottomOf="@id/author"
         tools:text="@sample/posts.json/data/published" />
 
     <ImageButton
@@ -63,8 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="avatar,published,menu"
-        />
+        app:constraint_referenced_ids="avatar,published,menu" />
 
     <TextView
         android:id="@+id/content"
@@ -83,8 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="content"
-        />
+        app:constraint_referenced_ids="content" />
 
     <ImageView
         android:id="@+id/likes"
@@ -100,9 +98,9 @@
         android:id="@+id/numberOfLikes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="@dimen/common_spacing"
         app:layout_constraintStart_toEndOf="@id/likes"
-        android:layout_marginStart="4dp"
         app:layout_constraintTop_toBottomOf="@id/barrierBeforeLikes"
         tools:text="@string/number_of_likes" />
 
@@ -110,9 +108,9 @@
         android:id="@+id/reposts"
         android:layout_width="@dimen/size_reaction_panel"
         android:layout_height="@dimen/size_reaction_panel"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="@dimen/common_spacing"
         android:contentDescription="@string/description_reposts"
-        android:layout_marginStart="4dp"
         app:layout_constraintStart_toEndOf="@id/numberOfLikes"
         app:layout_constraintTop_toBottomOf="@id/barrierBeforeLikes"
         app:srcCompat="@drawable/baseline_share_24" />
@@ -121,9 +119,9 @@
         android:id="@+id/numberOfReposts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="@dimen/common_spacing"
         app:layout_constraintStart_toEndOf="@id/reposts"
-        android:layout_marginStart="4dp"
         app:layout_constraintTop_toBottomOf="@id/barrierBeforeLikes"
         tools:text="@string/number_of_reposts" />
 
@@ -141,9 +139,9 @@
         android:layout_width="@dimen/size_reaction_panel"
         android:layout_height="@dimen/size_reaction_panel"
         android:layout_marginTop="@dimen/common_spacing"
+        android:layout_marginEnd="4dp"
         android:contentDescription="@string/description_views"
         app:layout_constraintEnd_toStartOf="@id/numberOfViews"
-        android:layout_marginEnd="4dp"
         app:layout_constraintTop_toBottomOf="@id/barrierBeforeLikes"
         app:srcCompat="@drawable/baseline_remove_red_eye_24" />
 
