@@ -2,6 +2,7 @@ package ru.netology.nmedia.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -12,8 +13,9 @@ import ru.netology.nmedia.dto.Post
 
 typealias OnLikeListener = (post: Post) -> Unit
 typealias OnRepostListener = (post: Post) -> Unit
+typealias OnRemoveListener = (post: Post) -> Unit
 
-class PostAdapter(private val onLikeListener: OnLikeListener, private val onRepostListener: OnRepostListener): ListAdapter<Post, PostViewHolder>(
+class PostAdapter(private val onLikeListener: OnLikeListener, private val onRepostListener: OnRepostListener, private val onRemoveListener: OnRemoveListener): ListAdapter<Post, PostViewHolder>(
     PostDiffCallBack
 ) {
 
@@ -22,7 +24,7 @@ class PostAdapter(private val onLikeListener: OnLikeListener, private val onRepo
         viewType: Int
     ): PostViewHolder {
         val binding = CardPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return PostViewHolder(binding, onLikeListener, onRepostListener)
+        return PostViewHolder(binding, onLikeListener, onRepostListener, onRemoveListener)
     }
 
     override fun onBindViewHolder(
@@ -34,7 +36,7 @@ class PostAdapter(private val onLikeListener: OnLikeListener, private val onRepo
     }
 }
 
-class PostViewHolder(private val binding:CardPostBinding, private val onLikeListener: OnLikeListener, private val onRepostListener: OnRepostListener): RecyclerView.ViewHolder(binding.root) {
+class PostViewHolder(private val binding:CardPostBinding, private val onLikeListener: OnLikeListener, private val onRepostListener: OnRepostListener, private val onRemoveListener: OnRemoveListener): RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) = with(binding) {
         val counter = Counter
         author.text = post.author
@@ -55,6 +57,20 @@ class PostViewHolder(private val binding:CardPostBinding, private val onLikeList
         }
         reposts.setOnClickListener {
             onRepostListener(post)
+        }
+        menu.setOnClickListener {
+            PopupMenu(it.context, it).apply {
+                inflate(R.menu.option_post)
+                setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        R.id.remove -> {
+                            onRemoveListener(post)
+                            true
+                        }
+                        else -> false
+                    }
+                }
+            }.show()
         }
     }
 }

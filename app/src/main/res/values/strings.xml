@@ -9,5 +9,7 @@
     <string name="number_of_reposts" translatable="false">20</string>
     <string name="description_views">Views icon</string>
     <string name="number_of_views" translatable="false">60</string>
-
+    <string name="menu_remove">Remove</string>
+    <string name="post_text">Post Text</string>
+    <string name="error_empty_content">Content cant be empty</string>
 </resources>
