@@ -15,7 +15,14 @@ typealias OnLikeListener = (post: Post) -> Unit
 typealias OnRepostListener = (post: Post) -> Unit
 typealias OnRemoveListener = (post: Post) -> Unit
 
-class PostAdapter(private val onLikeListener: OnLikeListener, private val onRepostListener: OnRepostListener, private val onRemoveListener: OnRemoveListener): ListAdapter<Post, PostViewHolder>(
+interface OnInteractorListener {
+    fun onLike(post: Post)
+    fun onRepost(post: Post)
+    fun onRemove(post: Post)
+    fun onEdit(post: Post)
+}
+
+class PostAdapter(private val onInteractorListener: OnInteractorListener): ListAdapter<Post, PostViewHolder>(
     PostDiffCallBack
 ) {
 
@@ -24,7 +31,7 @@ class PostAdapter(private val onLikeListener: OnLikeListener, private val onRepo
         viewType: Int
     ): PostViewHolder {
         val binding = CardPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return PostViewHolder(binding, onLikeListener, onRepostListener, onRemoveListener)
+        return PostViewHolder(binding, onInteractorListener)
     }
 
     override fun onBindViewHolder(
@@ -36,7 +43,7 @@ class PostAdapter(private val onLikeListener: OnLikeListener, private val onRepo
     }
 }
 
-class PostViewHolder(private val binding:CardPostBinding, private val onLikeListener: OnLikeListener, private val onRepostListener: OnRepostListener, private val onRemoveListener: OnRemoveListener): RecyclerView.ViewHolder(binding.root) {
+class PostViewHolder(private val binding:CardPostBinding, private val onInteractorListener: OnInteractorListener): RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) = with(binding) {
         val counter = Counter
         author.text = post.author
@@ -53,10 +60,10 @@ class PostViewHolder(private val binding:CardPostBinding, private val onLikeList
             else R.drawable.baseline_favorite_border_24
         )
         likes.setOnClickListener {
-            onLikeListener(post)
+            onInteractorListener.onLike(post)
         }
         reposts.setOnClickListener {
-            onRepostListener(post)
+            onInteractorListener.onRepost(post)
         }
         menu.setOnClickListener {
             PopupMenu(it.context, it).apply {
@@ -64,7 +71,11 @@ class PostViewHolder(private val binding:CardPostBinding, private val onLikeList
                 setOnMenuItemClickListener { item ->
                     when (item.itemId) {
                         R.id.remove -> {
-                            onRemoveListener(post)
+                            onInteractorListener.onRemove(post)
+                            true
+                        }
+                        R.id.edit -> {
+                            onInteractorListener.onEdit(post)
                             true
                         }
                         else -> false

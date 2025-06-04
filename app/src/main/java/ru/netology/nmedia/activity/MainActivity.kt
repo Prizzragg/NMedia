@@ -5,8 +5,10 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import ru.netology.nmedia.adapter.OnInteractorListener
 import ru.netology.nmedia.adapter.PostAdapter
 import ru.netology.nmedia.databinding.ActivityMainBinding
+import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.utils.AndroidUtils
 import ru.netology.nmedia.viewmodel.PostViewModel
 
@@ -18,12 +20,22 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val adapter = PostAdapter({
-            viewModel.like(it.id)
-        },{
-            viewModel.repost(it.id)
-        }, {
-            viewModel.remove(it.id)
+        val adapter = PostAdapter(object : OnInteractorListener{
+            override fun onLike(post: Post) {
+                viewModel.like(post.id)
+            }
+
+            override fun onRepost(post: Post) {
+                viewModel.repost(post.id)
+            }
+
+            override fun onRemove(post: Post) {
+                viewModel.remove(post.id)
+            }
+
+            override fun onEdit(post: Post) {
+                viewModel.edit(post)
+            }
         })
         binding.list.adapter = adapter
         viewModel.data.observe(this) { posts ->
@@ -32,6 +44,13 @@ class MainActivity : AppCompatActivity() {
                 if (isNew) {
                     binding.list.smoothScrollToPosition(0)
                 }
+            }
+        }
+
+        viewModel.edited.observe(this) { post ->
+            if (post.id != 0L) {
+                binding.content.requestFocus()
+                binding.content.setText(post.content)
             }
         }
 
