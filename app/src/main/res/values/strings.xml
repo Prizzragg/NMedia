@@ -13,4 +13,10 @@
     <string name="menu_edit">Edit</string>
     <string name="post_text">Post Text</string>
     <string name="error_empty_content">Content cant be empty</string>
+    <string name="edit_message">Edit Message</string>
+    <string name="description_save">Save icon</string>
+    <string name="description_cancel_edit_button">Cancel edit button</string>
+    <string name="description_cancel_edit_icon">Cancel edit icon</string>
+    <string name="text_post_edited">Text post edited</string>
+    <string name="description_cancel_edit">Cancel edit icon</string>
 </resources>

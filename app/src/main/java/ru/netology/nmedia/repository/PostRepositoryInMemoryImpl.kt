@@ -147,4 +147,6 @@ class PostRepositoryInMemoryImpl : PostRepository {
         data.value = posts
         return
     }
+
+    override fun cancelEdit() {}
 }

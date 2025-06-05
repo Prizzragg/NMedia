@@ -11,15 +11,12 @@ import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.dto.Counter
 import ru.netology.nmedia.dto.Post
 
-typealias OnLikeListener = (post: Post) -> Unit
-typealias OnRepostListener = (post: Post) -> Unit
-typealias OnRemoveListener = (post: Post) -> Unit
-
 interface OnInteractorListener {
     fun onLike(post: Post)
     fun onRepost(post: Post)
     fun onRemove(post: Post)
     fun onEdit(post: Post)
+    fun cancelEdit()
 }
 
 class PostAdapter(private val onInteractorListener: OnInteractorListener): ListAdapter<Post, PostViewHolder>(
@@ -52,6 +49,7 @@ class PostViewHolder(private val binding:CardPostBinding, private val onInteract
         numberOfReposts.text = counter.shortNote(post.reposts)
         numberOfLikes.text = counter.shortNote(post.likes)
         numberOfViews.text = counter.shortNote(post.share)
+
         if (post.likedByMe) {
             likes.setImageResource(R.drawable.baseline_favorite_border_red)
         }
@@ -76,6 +74,7 @@ class PostViewHolder(private val binding:CardPostBinding, private val onInteract
                         }
                         R.id.edit -> {
                             onInteractorListener.onEdit(post)
+                            onInteractorListener.cancelEdit()
                             true
                         }
                         else -> false

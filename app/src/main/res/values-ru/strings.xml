@@ -11,4 +11,10 @@
     <string name="menu_edit">Редактировать</string>
     <string name="post_text">Текст поста</string>
     <string name="error_empty_content">Контент не может быть пустым</string>
+    <string name="edit_message">Редактирование</string>
+    <string name="description_save">Иконка сохранения</string>
+    <string name="description_cancel_edit">Иконка отмены редактирования</string>
+    <string name="description_cancel_edit_button">Кнопка отмены редактирования</string>
+    <string name="description_cancel_edit_icon">Иконка отмены редактирования</string>
+    <string name="text_post_edited">Текст редактируемого поста</string>
 </resources>

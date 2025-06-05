@@ -1,6 +1,7 @@
 package ru.netology.nmedia.activity
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -9,7 +10,7 @@ import ru.netology.nmedia.adapter.OnInteractorListener
 import ru.netology.nmedia.adapter.PostAdapter
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.Post
-import ru.netology.nmedia.utils.AndroidUtils
+import ru.netology.nmedia.utils.hideKeyBoard
 import ru.netology.nmedia.viewmodel.PostViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -36,6 +37,10 @@ class MainActivity : AppCompatActivity() {
             override fun onEdit(post: Post) {
                 viewModel.edit(post)
             }
+
+            override fun cancelEdit() {
+                viewModel.cancelEdit()
+            }
         })
         binding.list.adapter = adapter
         viewModel.data.observe(this) { posts ->
@@ -49,8 +54,9 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.edited.observe(this) { post ->
             if (post.id != 0L) {
-                binding.content.requestFocus()
                 binding.content.setText(post.content)
+                binding.groupEdit.visibility = View.VISIBLE
+                binding.textPost.text = post.content
             }
         }
 
@@ -62,14 +68,20 @@ class MainActivity : AppCompatActivity() {
                         "Content cant be empty",
                         Toast.LENGTH_SHORT
                     ).show()
+                } else {
+                    viewModel.changeContent(text.toString())
+                    viewModel.save()
+                    binding.groupEdit.visibility = View.GONE
+                    setText("")
+                    clearFocus()
+                    hideKeyBoard()
                 }
-                viewModel.changeContent(text.toString())
-                viewModel.save()
-
-                setText("")
-                clearFocus()
-                AndroidUtils.hideKeyboard(this)
             }
+        }
+        binding.cancelEdit.setOnClickListener {
+            binding.content.setText("")
+            binding.groupEdit.visibility = View.GONE
+            binding.content.hideKeyBoard()
         }
     }
 }
