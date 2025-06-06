@@ -7,7 +7,7 @@ import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.repository.PostRepository
 import ru.netology.nmedia.repository.PostRepositoryInMemoryImpl
 
-private val emptyPost = Post (
+private val emptyPost = Post(
     id = 0,
     author = "",
     content = "",
@@ -32,6 +32,7 @@ class PostViewModel : ViewModel() {
             }
         }
     }
+
     fun save() {
         edited.value?.let {
             repository.save(it)
@@ -43,5 +44,8 @@ class PostViewModel : ViewModel() {
         edited.value = post
     }
 
-    fun cancelEdit() {}
+    fun closeEdit() {
+        edited.value = emptyPost
+    }
+
 }

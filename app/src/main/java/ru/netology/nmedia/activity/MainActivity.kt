@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val adapter = PostAdapter(object : OnInteractorListener{
+        val adapter = PostAdapter(object : OnInteractorListener {
             override fun onLike(post: Post) {
                 viewModel.like(post.id)
             }
@@ -38,9 +38,6 @@ class MainActivity : AppCompatActivity() {
                 viewModel.edit(post)
             }
 
-            override fun cancelEdit() {
-                viewModel.cancelEdit()
-            }
         })
         binding.list.adapter = adapter
         viewModel.data.observe(this) { posts ->
@@ -54,9 +51,11 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.edited.observe(this) { post ->
             if (post.id != 0L) {
-                binding.content.setText(post.content)
-                binding.groupEdit.visibility = View.VISIBLE
-                binding.textPost.text = post.content
+                with(binding) {
+                    content.setText(post.content)
+                    groupEdit.visibility = View.VISIBLE
+                    textPost.text = post.content
+                }
             }
         }
 
@@ -79,9 +78,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
         binding.cancelEdit.setOnClickListener {
-            binding.content.setText("")
-            binding.groupEdit.visibility = View.GONE
-            binding.content.hideKeyBoard()
+            viewModel.closeEdit()
+            with(binding) {
+                content.setText("")
+                groupEdit.visibility = View.GONE
+                content.hideKeyBoard()
+            }
         }
     }
 }

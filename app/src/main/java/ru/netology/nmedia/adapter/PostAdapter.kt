@@ -16,12 +16,12 @@ interface OnInteractorListener {
     fun onRepost(post: Post)
     fun onRemove(post: Post)
     fun onEdit(post: Post)
-    fun cancelEdit()
 }
 
-class PostAdapter(private val onInteractorListener: OnInteractorListener): ListAdapter<Post, PostViewHolder>(
-    PostDiffCallBack
-) {
+class PostAdapter(private val onInteractorListener: OnInteractorListener) :
+    ListAdapter<Post, PostViewHolder>(
+        PostDiffCallBack
+    ) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -40,7 +40,10 @@ class PostAdapter(private val onInteractorListener: OnInteractorListener): ListA
     }
 }
 
-class PostViewHolder(private val binding:CardPostBinding, private val onInteractorListener: OnInteractorListener): RecyclerView.ViewHolder(binding.root) {
+class PostViewHolder(
+    private val binding: CardPostBinding,
+    private val onInteractorListener: OnInteractorListener
+) : RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) = with(binding) {
         val counter = Counter
         author.text = post.author
@@ -72,11 +75,12 @@ class PostViewHolder(private val binding:CardPostBinding, private val onInteract
                             onInteractorListener.onRemove(post)
                             true
                         }
+
                         R.id.edit -> {
                             onInteractorListener.onEdit(post)
-                            onInteractorListener.cancelEdit()
                             true
                         }
+
                         else -> false
                     }
                 }
@@ -85,7 +89,7 @@ class PostViewHolder(private val binding:CardPostBinding, private val onInteract
     }
 }
 
-object PostDiffCallBack: DiffUtil.ItemCallback<Post>() {
+object PostDiffCallBack : DiffUtil.ItemCallback<Post>() {
     override fun areItemsTheSame(
         oldItem: Post,
         newItem: Post

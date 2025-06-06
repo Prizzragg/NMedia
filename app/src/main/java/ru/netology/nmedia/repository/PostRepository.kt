@@ -9,5 +9,4 @@ interface PostRepository {
     fun repost(id: Long)
     fun remove(id: Long)
     fun save(post: Post)
-    fun cancelEdit()
 }
