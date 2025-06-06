@@ -15,7 +15,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             published = "23 сентября в 10:12",
             likes = 999,
             reposts = 1099999,
-            share = 654,
+            views = 654,
             likedByMe = false
         ),
         Post(
@@ -73,7 +73,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             published = "18 сентября в 10:12",
             likes = 20,
             reposts = 999,
-            share = 655,
+            views = 655,
             likedByMe = false
         ),
         Post(
@@ -83,7 +83,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             published = "21 мая в 18:36",
             likes = 965,
             reposts = 10356,
-            share = 65,
+            views = 65,
             likedByMe = false
         )
     )

@@ -49,17 +49,12 @@ class PostViewHolder(
         author.text = post.author
         published.text = post.published
         content.text = post.content
-        numberOfReposts.text = counter.shortNote(post.reposts)
-        numberOfLikes.text = counter.shortNote(post.likes)
-        numberOfViews.text = counter.shortNote(post.share)
-
-        if (post.likedByMe) {
-            likes.setImageResource(R.drawable.baseline_favorite_border_red)
+        numberOfViews.text = counter.shortNote(post.views)
+        likes.apply {
+            isChecked = post.likedByMe
+            text = counter.shortNote(post.likes).toString()
         }
-        likes.setImageResource(
-            if (post.likedByMe) R.drawable.baseline_favorite_border_red
-            else R.drawable.baseline_favorite_border_24
-        )
+        reposts.text = counter.shortNote(post.reposts).toString()
         likes.setOnClickListener {
             onInteractorListener.onLike(post)
         }

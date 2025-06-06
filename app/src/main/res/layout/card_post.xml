@@ -47,16 +47,17 @@
         app:layout_constraintTop_toBottomOf="@id/author"
         tools:text="@sample/posts.json/data/published" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/menu"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/common_spacing"
         android:background="@android:color/transparent"
         android:contentDescription="@string/description_post_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_more_vert_24" />
+        app:icon="@drawable/ic_baseline_more_vert_24"
+        style="@style/Style.MenuButton" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
@@ -84,61 +85,47 @@
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="content" />
 
-    <ImageView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/likes"
-        android:layout_width="@dimen/size_reaction_panel"
-        android:layout_height="@dimen/size_reaction_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_spacing"
         android:contentDescription="@string/description_likes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrierBeforeLikes"
-        app:srcCompat="@drawable/baseline_favorite_border_24" />
+        app:icon="@drawable/ic_like"
+        android:checkable="true"
+        style="@style/Style.LikeButton"/>
 
-    <TextView
-        android:id="@+id/numberOfLikes"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/reposts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="@dimen/common_spacing"
-        app:layout_constraintStart_toEndOf="@id/likes"
-        app:layout_constraintTop_toBottomOf="@id/barrierBeforeLikes"
-        tools:text="@string/number_of_likes" />
-
-    <ImageView
-        android:id="@+id/reposts"
-        android:layout_width="@dimen/size_reaction_panel"
-        android:layout_height="@dimen/size_reaction_panel"
         android:layout_marginStart="4dp"
         android:layout_marginTop="@dimen/common_spacing"
         android:contentDescription="@string/description_reposts"
-        app:layout_constraintStart_toEndOf="@id/numberOfLikes"
+        app:layout_constraintStart_toEndOf="@id/likes"
         app:layout_constraintTop_toBottomOf="@id/barrierBeforeLikes"
-        app:srcCompat="@drawable/baseline_share_24" />
-
-    <TextView
-        android:id="@+id/numberOfReposts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="@dimen/common_spacing"
-        app:layout_constraintStart_toEndOf="@id/reposts"
-        app:layout_constraintTop_toBottomOf="@id/barrierBeforeLikes"
-        tools:text="@string/number_of_reposts" />
+        app:icon="@drawable/baseline_share_24"
+        style="@style/Style.ShareButton"/>
 
     <TextView
         android:id="@+id/numberOfViews"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/common_spacing"
+        android:layout_height="24dp"
+        android:layout_marginTop="28dp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="4dp"
+        android:textAlignment="center"
         app:layout_constraintTop_toBottomOf="@id/barrierBeforeLikes"
         tools:text="@string/number_of_views" />
 
     <ImageView
         android:id="@+id/views"
-        android:layout_width="@dimen/size_reaction_panel"
-        android:layout_height="@dimen/size_reaction_panel"
-        android:layout_marginTop="@dimen/common_spacing"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="4dp"
         android:contentDescription="@string/description_views"
         app:layout_constraintEnd_toStartOf="@id/numberOfViews"
