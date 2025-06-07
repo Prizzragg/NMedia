@@ -49,12 +49,12 @@ class PostViewHolder(
         author.text = post.author
         published.text = post.published
         content.text = post.content
-        numberOfViews.text = counter.shortNote(post.views)
         likes.apply {
             isChecked = post.likedByMe
             text = counter.shortNote(post.likes).toString()
         }
         reposts.text = counter.shortNote(post.reposts).toString()
+        views.text = counter.shortNote(post.views).toString()
         likes.setOnClickListener {
             onInteractorListener.onLike(post)
         }

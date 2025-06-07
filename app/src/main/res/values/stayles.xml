@@ -12,6 +12,10 @@
         <item name="iconTint">?attr/colorControlNormal</item>
     </style>
 
+    <style name="Style.ViewsIcon" parent="Widget.Material3.Button.TextButton.Icon">
+        <item name="iconTint">?attr/colorControlNormal</item>
+    </style>
+
     <style name="Style.MenuButton" parent="Widget.Material3.Button.TextButton.Icon">
         <item name="iconTint">?attr/colorControlNormal</item>
         <item name="android:minHeight">48dp</item>
