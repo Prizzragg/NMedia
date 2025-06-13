@@ -17,4 +17,9 @@
     <string name="description_cancel_edit_button">Кнопка отмены редактирования</string>
     <string name="description_cancel_edit_icon">Иконка отмены редактирования</string>
     <string name="text_post_edited">Текст редактируемого поста</string>
+    <string name="chooser_share_post">Поделиться</string>
+    <string name="description_button_edd">Кнопка создания нового поста</string>
+    <string name="description_button_add">Кнопка создания нового поста</string>
+    <string name="description_video_image">Видеоизображение</string>
+    <string name="description_play_icon">Иконка запуска видео</string>
 </resources>

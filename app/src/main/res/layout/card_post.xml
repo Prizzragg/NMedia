@@ -14,10 +14,10 @@
         android:layout_height="@dimen/posts_avatar_size"
         android:layout_marginBottom="@dimen/common_spacing"
         android:contentDescription="@string/description_post_author_avatar"
+        android:src="@drawable/post_avatar_drawable"
         app:layout_constraintBottom_toBottomOf="@id/barrier"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@sample/posts.json/data/authorAvatar" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/author"
@@ -49,15 +49,15 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/menu"
+        style="@style/Style.MenuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/common_spacing"
         android:background="@android:color/transparent"
         android:contentDescription="@string/description_post_menu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:icon="@drawable/ic_baseline_more_vert_24"
-        style="@style/Style.MenuButton" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
@@ -78,49 +78,57 @@
         app:layout_constraintTop_toBottomOf="@id/barrier"
         tools:text="@sample/posts.json/data/content" />
 
+    <ImageView
+        android:id="@+id/video_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/description_video_image"
+        android:src="@drawable/images"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/content" />
+
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrierBeforeLikes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="content" />
+        app:constraint_referenced_ids="content, video_image" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/likes"
+        style="@style/Style.LikeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_spacing"
-        android:contentDescription="@string/description_likes"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrierBeforeLikes"
-        app:icon="@drawable/ic_like"
         android:checkable="true"
-        style="@style/Style.LikeButton"/>
+        android:contentDescription="@string/description_likes"
+        app:icon="@drawable/ic_like"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrierBeforeLikes" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/reposts"
+        style="@style/Style.ShareButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="@dimen/common_spacing"
         android:contentDescription="@string/description_reposts"
-        app:layout_constraintStart_toEndOf="@id/likes"
-        app:layout_constraintTop_toBottomOf="@id/barrierBeforeLikes"
         app:icon="@drawable/baseline_share_24"
-        style="@style/Style.ShareButton" />
+        app:layout_constraintStart_toEndOf="@id/likes"
+        app:layout_constraintTop_toBottomOf="@id/barrierBeforeLikes" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/views"
+        style="@style/Style.ViewsIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_spacing"
         android:layout_marginEnd="4dp"
+        android:clickable="false"
         android:contentDescription="@string/description_views"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrierBeforeLikes"
         app:icon="@drawable/baseline_remove_red_eye_24"
-        style="@style/Style.ViewsIcon"
-        android:clickable="false"/>
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrierBeforeLikes" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

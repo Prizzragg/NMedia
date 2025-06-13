@@ -19,4 +19,9 @@
     <string name="description_cancel_edit_icon">Cancel edit icon</string>
     <string name="text_post_edited">Text post edited</string>
     <string name="description_cancel_edit">Cancel edit icon</string>
+    <string name="chooser_share_post">Share post</string>
+    <string name="description_button_add">Create new post button</string>
+    <string name="description_video_image">Video image</string>
+    <string name="description_button_edd">Create new post button</string>
+    <string name="description_play_icon">Play video icon</string>
 </resources>

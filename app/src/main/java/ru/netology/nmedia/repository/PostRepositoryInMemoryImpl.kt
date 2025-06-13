@@ -16,7 +16,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             likes = 999,
             reposts = 1099999,
             views = 654,
-            likedByMe = false
+            likedByMe = false,
+            video = null
         ),
         Post(
             id = index++,
@@ -24,7 +25,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             content = "Делиться впечатлениями о любимых фильмах легко, а что если рассказать так, чтобы все заскучали \uD83D\uDE34\n",
             published = "22 сентября в 10:14",
             likes = 80,
-            likedByMe = false
+            likedByMe = false,
+            video = null
         ),
         Post(
             id = index++,
@@ -32,7 +34,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             content = "Таймбоксинг — отличный способ навести порядок в своём календаре и разобраться с делами, которые долго откладывали на потом. Его главный принцип — на каждое дело заранее выделяется определённый отрезок времени. В это время вы работаете только над одной задачей, не переключаясь на другие. Собрали советы, которые помогут внедрить таймбоксинг \uD83D\uDC47\uD83C\uDFFB",
             published = "22 сентября в 10:12",
             likes = 70,
-            likedByMe = false
+            likedByMe = false,
+            video = null
         ),
         Post(
             id = index++,
@@ -40,7 +43,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             content = "\uD83D\uDE80 24 сентября стартует новый поток бесплатного курса «Диджитал-старт: первый шаг к востребованной профессии» — за две недели вы попробуете себя в разных профессиях и определите, что подходит именно вам → http://netolo.gy/fQ",
             published = "21 сентября в 10:12",
             likes = 60,
-            likedByMe = false
+            likedByMe = false,
+            video = null
         ),
         Post(
             id = index++,
@@ -48,7 +52,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             content = "Диджитал давно стал частью нашей жизни: мы общаемся в социальных сетях и мессенджерах, заказываем еду, такси и оплачиваем счета через приложения.",
             published = "20 сентября в 10:14",
             likes = 50,
-            likedByMe = false
+            likedByMe = false,
+            video = null
         ),
         Post(
             id = index++,
@@ -56,7 +61,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             content = "Большая афиша мероприятий осени: конференции, выставки и хакатоны для жителей Москвы, Ульяновска и Новосибирска \uD83D\uDE09",
             published = "19 сентября в 14:12",
             likes = 40,
-            likedByMe = false
+            likedByMe = false,
+            video = null
         ),
         Post(
             id = index++,
@@ -64,7 +70,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             content = "Языков программирования много, и выбрать какой-то один бывает нелегко. Собрали подборку статей, которая поможет вам начать, если вы остановили свой выбор на JavaScript.",
             published = "19 сентября в 10:24",
             likes = 30,
-            likedByMe = false
+            likedByMe = false,
+            video = null
         ),
         Post(
             id = index++,
@@ -74,7 +81,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             likes = 20,
             reposts = 999,
             views = 655,
-            likedByMe = false
+            likedByMe = false,
+            video = null
         ),
         Post(
             id = index++,
@@ -84,7 +92,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             likes = 965,
             reposts = 10356,
             views = 65,
-            likedByMe = false
+            likedByMe = false,
+            video = "https://www.youtube.com/watch?v=WhWc3b3KhnY"
         )
     )
 
