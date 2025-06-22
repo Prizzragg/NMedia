@@ -18,6 +18,7 @@ interface OnInteractorListener {
     fun onRemove(post: Post)
     fun onEdit(post: Post)
     fun viewVideo(post: Post)
+    fun viewSinglePost(post: Post)
 }
 
 class PostAdapter(private val onInteractorListener: OnInteractorListener) :
@@ -71,6 +72,9 @@ class PostViewHolder(
         }
         videoImage.setOnClickListener {
             onInteractorListener.viewVideo(post)
+        }
+        binding.content.setOnClickListener {
+            onInteractorListener.viewSinglePost(post)
         }
         menu.setOnClickListener {
             PopupMenu(it.context, it).apply {
