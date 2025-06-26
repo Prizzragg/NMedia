@@ -1,5 +1,6 @@
 package ru.netology.nmedia.activity
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,17 +26,30 @@ class NewPostFragment : Fragment() {
             false
         )
         val viewModel: PostViewModel by viewModels(ownerProducer = ::requireParentFragment)
-        arguments?.textArgs.let(binding.edit::setText)
+        requireActivity().getPreferences(Context.MODE_PRIVATE)
+            .getString("text", null)?.let {
+                binding.edit.setText(it)
+            }
         binding.save.setOnClickListener {
             if (binding.edit.text.isNullOrBlank()) {
                 findNavController().navigateUp()
             } else {
                 val content = binding.edit.text.toString()
+                val pref = requireActivity().getPreferences(Context.MODE_PRIVATE)
+                pref.edit().apply() {
+                    putString("text", null)
+                    commit()
+                }
                 viewModel.save(content)
             }
             findNavController().navigateUp()
         }
         val callback = requireActivity().onBackPressedDispatcher.addCallback {
+            val pref = requireActivity().getPreferences(Context.MODE_PRIVATE)
+            pref.edit().apply() {
+                putString("text", binding.edit.text.toString())
+                commit()
+            }
             findNavController().navigateUp()
         }
         return binding.root
