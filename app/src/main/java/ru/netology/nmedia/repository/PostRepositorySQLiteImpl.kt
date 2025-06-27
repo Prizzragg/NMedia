@@ -43,7 +43,7 @@ class PostRepositorySQLiteImpl(
     }
 
     override fun repost(id: Long) {
-        dao.likeById(id)
+        dao.repostById(id)
         posts = posts.map {
             if (it.id != id) it else it.copy(
                 reposts = it.reposts + 1
