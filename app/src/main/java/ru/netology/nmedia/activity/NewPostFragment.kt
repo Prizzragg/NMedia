@@ -9,7 +9,6 @@ import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import ru.netology.nmedia.activity.FeedFragment.Companion.textArgs
 import ru.netology.nmedia.databinding.FragmentNewPostBinding
 import ru.netology.nmedia.viewmodel.PostViewModel
 

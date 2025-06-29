@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id 'org.jetbrains.kotlin.kapt'
 }
 
 android {
@@ -36,6 +37,7 @@ android {
 
 dependencies {
     def gson_version = "2.12.1"
+    def room_version = "2.6.1"
 
 
     implementation(libs.androidx.core.ktx)
@@ -49,4 +51,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation "com.google.code.gson:gson:$gson_version"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 }
