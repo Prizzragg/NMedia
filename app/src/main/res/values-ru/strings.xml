@@ -22,4 +22,11 @@
     <string name="description_button_add">Кнопка создания нового поста</string>
     <string name="description_video_image">Видеоизображение</string>
     <string name="description_play_icon">Иконка запуска видео</string>
+    <string name="google_play_unavailable">Внимание! На вашем устройстве отсутствуют google services. Отправка уведомлений невозможна.</string>
+    <string name="channel_remote_name">Уведомления сервера</string>
+    <string name="channel_remote_description">Уведомления с удаленного сервера</string>
+    <string name="channel_create_description">Уведомления о создании нового поста</string>
+    <string name="notification_user_liked">Пользователю %1$s понравился пост %2$s\'s</string>
+    <string name="channel_create_name">Уведомления сервера о новом посте</string>
+    <string name="notification_user_create_new_post">%1$s cоздал новый пост:</string>
 </resources>
